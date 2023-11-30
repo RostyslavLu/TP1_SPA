@@ -1,14 +1,13 @@
 //4. import the views
 import Dashboard from "./view/Dashboard.js";
 import Posts from "./view/Posts.js";
-import Settings from "./view/Settings.js";
 
 //1. Create a router function
 const router = async () => {
     const routes = [
         { path: "/", view: Dashboard},
         { path: "/posts", view: Posts},
-        { path: "/settings", view: Settings},
+
     ];
     //1.2 Test each route for potential match
     const potentialMatches = routes.map(route => {
