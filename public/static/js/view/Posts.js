@@ -25,9 +25,9 @@ export default class extends AbstructView {
                 <p class="card-text">${data[i]['titre']}</p>
                 <div class="d-flex justify-content-between align-items-center">
                   <div class="btn-group">
-                  <a href="/post-view/${data[i]['id']}" class="btn btn-sm btn-outline-secondary" data-link>View</a>
+                  <a href="/post-view/${i}" class="btn btn-sm btn-outline-secondary" data-link>Details</a>
                   </div>
-                  <small class="text-muted">9 mins</small>
+                  <small class="text-muted">${data[i]['date_production']}</small>
                 </div>
               </div>
             </div>
