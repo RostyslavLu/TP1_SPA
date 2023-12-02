@@ -5,11 +5,14 @@ const request = require('request');
 const fs = require('fs');
 const config = require('./config');
 const port = config.PORT;
+const api_key = config.API_KEY;
 
 app.use('/static', express.static(path.resolve(__dirname, 'public', 'static')));
 
 app.get('/*', (req, res) => {
-    const url = 'https://www.donneesquebec.ca/recherche/dataset/428fc380-dff4-4bf7-913d-3d719ecdff00/resource/97ff4670-c522-497a-89c8-ee6891831af8/download/oeuvresmac.json';
+    const url = `https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date=2023-02-25&api_key=${api_key}`;
+
+    console.log('url: ', url);
     request.get({
         url: url,
         json: true,
@@ -20,7 +23,6 @@ app.get('/*', (req, res) => {
         } else if (response.statusCode !== 200) {
           console.log('Status:', response.statusCode);
         } else {
-
           const newData = JSON.stringify(data);
           fs.writeFile(`./public/static/data/data.json`, newData, (err) => {
             if (err){
@@ -33,6 +35,7 @@ app.get('/*', (req, res) => {
           });
         }
     });
+
     res.sendFile(path.resolve(__dirname, 'public', 'index.html'));
 });
 

@@ -1,7 +1,7 @@
 export default class {
 
-    constructor(parms) {
-        // this.params = parms;
+    constructor(params) {
+        this.params = params;
     }
     setTitle(title) {
         document.title = title;
