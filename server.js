@@ -4,15 +4,16 @@ const path = require('path');
 const request = require('request');
 const fs = require('fs');
 const config = require('./config');
+const { log } = require('console');
 const port = config.PORT;
 const api_key = config.API_KEY;
+const earth_date = config.DATE;
 
 app.use('/static', express.static(path.resolve(__dirname, 'public', 'static')));
 
 app.get('/*', (req, res) => {
-    const url = `https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date=2023-02-25&api_key=${api_key}`;
 
-    console.log('url: ', url);
+    const url = `https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date=${earth_date}&api_key=${api_key}`;
     request.get({
         url: url,
         json: true,
@@ -39,4 +40,4 @@ app.get('/*', (req, res) => {
     res.sendFile(path.resolve(__dirname, 'public', 'index.html'));
 });
 
-app.listen(port, () => console.log('Server running...'));
+app.listen(port, () => console.log('Server running on port ' + port + '...'));

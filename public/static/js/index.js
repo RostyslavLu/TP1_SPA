@@ -6,7 +6,7 @@ import PhotoView from "./view/PhotoView.js";
 //5. Create a pathToRegex function
 const pathToRegex = path => new RegExp("^" + path.replace(/\//g, "\\/").replace(/:\w+/g, "(.+)") + "$");
 
-//6
+//6. 
 const getParams = match => {
     const values = match.isMatch.slice(1);
     const keys = Array.from(match.route.path.matchAll(/:(\w+)/g)).map(isMatch => isMatch[1]);
@@ -37,9 +37,8 @@ const router = async () => {
             isMatch: [location.pathname]
         };
     };
-    //match.route.view();
+
     //1.4 Load the view
-    //document.querySelector("#app").innerHTML = match.route.view;
     const view = new match.route.view(getParams(match));
     document.querySelector("#app").innerHTML = await view.getHtml();
 };
@@ -48,7 +47,7 @@ const navigateTo = url => {
     history.pushState(null, null, url);
     router();
 }
-//7
+//7 Listen for the popstate event
 window.addEventListener("popstate", router);
 //2. Listen for the DOMContentLoaded event
 document.addEventListener("DOMContentLoaded", () => {

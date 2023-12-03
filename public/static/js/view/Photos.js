@@ -12,12 +12,12 @@ export default class extends AbstructView {
     }
     const data = await getData('./static/data/data.json');
     const photos = data['photos'];
-    let listPosts = `<div class="album py-5 bg-light">
+    let listPhotos = `<div class="album py-5 bg-light">
     <div class="container">
 
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">`;
     for (let i in photos) {
-      listPosts += `
+      listPhotos += `
                 <div class="col">
                 <div class="card shadow-sm">
                 <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="${photos[i]['img_src']}" alt="${photos[i]['id']}">
@@ -34,10 +34,10 @@ export default class extends AbstructView {
               </div>
             `;
     }
-    listPosts += `</div> </div></div>`;
+    listPhotos += `</div> </div></div>`;
     return `
             <h1 class="display-5 fw-bold text-center">Mars Rover Photos</h1>
-            ${listPosts}
+            ${listPhotos}
             `;
   }
 }
