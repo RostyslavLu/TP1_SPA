@@ -36,7 +36,7 @@ export default class extends AbstructView {
     }
     listPhotos += `</div> </div></div>`;
     return `
-            <h1 class="display-5 fw-bold text-center">Mars Rover Photos</h1>
+            
             ${listPhotos}
             `;
   }
