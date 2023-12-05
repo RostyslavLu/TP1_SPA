@@ -10,7 +10,6 @@ export default class extends AbstructView {
             const response = await fetch(url);
             return response.json();
         }
-
         const data = await getData('../static/data/data.json');
         const photos = data['photos'];
         const post_id = Number(this.params.id);

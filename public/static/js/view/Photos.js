@@ -34,10 +34,7 @@ export default class extends AbstructView {
               </div>
             `;
     }
-    listPhotos += `</div> </div></div>`;
-    return `
-            
-            ${listPhotos}
-            `;
+    listPhotos += `</div></div></div>`;
+    return `${listPhotos}`;
   }
 }
